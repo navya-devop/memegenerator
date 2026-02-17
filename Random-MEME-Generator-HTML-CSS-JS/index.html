@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random MEME Generator </title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Anton&family=Oswald:wght@400;700&family=Comic+Neue:wght@400;700&family=Press+Start+2P&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="meme-generator">
+      <div class="top-toolbar">
+        <button id="refresh-btn" class="refresh-btn" title="Start Fresh">
+          <!-- simple refresh SVG -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12a9 9 0 10-2.8 6.2" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 3v6h-6" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <h1 class="title">Random Meme Generator</h1>
+
+      <section class="controls-section">
+        <h2 class="section-heading">Inputs</h2>
+        <div class="controls">
+          <label class="file-label">Background image
+            <input id="image-input" type="file" accept="image/*" />
+          </label>
+
+          <label class="file-label">Add image layer
+            <input id="add-image-input" type="file" accept="image/*" />
+          </label>
+
+        <label>Mood
+          <select id="mood-select">
+            <option value="funny">Funny</option>
+            <option value="sarcastic">Sarcastic</option>
+            <option value="sad">Sad</option>
+            <option value="wholesome">Wholesome</option>
+            <option value="angry">Angry</option>
+          </select>
+        </label>
+
+        <label>Font
+          <select id="font-select">
+            <option value="Anton">Anton (Bold)</option>
+            <option value="Oswald">Oswald</option>
+            <option value="Roboto">Roboto</option>
+            <option value="Bubblegum Sans">Bubblegum Sans (Bubble)</option>
+            <option value="Comic Neue">Comic Neue</option>
+            <option value="'Press Start 2P'">Press Start 2P</option>
+            <option value="Impact, Arial Black, sans-serif">Impact (Fallback)</option>
+          </select>
+        </label>
+        <br>
+        <br>
+        <br>
+        <br>
+        <section>
+
+        <button id="generate-btn" class="generate-meme-btn">Generate Meme</button>
+        <button id="randomize-btn" class="generate-meme-btn">Randomize Text</button>
+        <button id="download-btn" class="generate-meme-btn">Download</button></section>
+        </div>
+      </section>
+      <section class="images-section">
+        <h2 class="section-heading">Image Layers</h2>
+        <div class="text-panel">
+          <div id="image-items" class="text-items"></div>
+
+          <div class="text-properties" id="image-properties">
+            <h3>Image Properties</h3>
+            <label>Scale<input id="img-scale" type="range" min="10" max="300" value="100" /></label>
+            <label>Rotate<input id="img-rotate" type="range" min="0" max="360" value="0" /></label>
+            <label>Opacity<input id="img-opacity" type="range" min="0" max="100" value="100" /></label>
+            <label><input id="img-flip" type="checkbox" /> Flip horizontal</label>
+            <div class="prop-actions">
+              <button id="remove-img-btn" class="generate-meme-btn">Remove</button>
+              <button id="bring-img-front-btn" class="generate-meme-btn">Bring Front</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="editor-section">
+        <h2 class="section-heading">Text Layers</h2>
+        <div class="editor controls">
+          <button id="add-text-btn" class="generate-meme-btn">Add Text</button>
+        </div>
+
+        <div class="text-panel">
+          <div id="text-items" class="text-items"></div>
+
+          <div class="text-properties">
+            <h3>Properties</h3>
+            <label>Content<input id="prop-text" type="text" /></label>
+            <label>Font Size<input id="prop-size" type="range" min="12" max="160" value="48" /></label>
+            <label>Color<input id="prop-color" type="color" value="#ffffff" /></label>
+            <label>Shape
+              <select id="prop-shape">
+                <option value="none">None</option>
+                <option value="rect">Rectangle</option>
+                <option value="rounded">Rounded</option>
+                <option value="ellipse">Ellipse</option>
+              </select>
+            </label>
+            <div class="prop-actions">
+              <button id="remove-text-btn" class="generate-meme-btn">Remove</button>
+              <button id="bring-front-btn" class="generate-meme-btn">Bring Front</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="preview-section">
+        <h2 class="section-heading">Preview</h2>
+        <canvas id="meme-canvas"></canvas>
+      </section>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
