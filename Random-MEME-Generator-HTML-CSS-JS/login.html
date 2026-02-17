@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Login — Random MEME Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      .auth-wrap{ max-width:420px; margin:60px auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+      .auth-wrap h1{ margin-top:0; font-size:20px }
+      .auth-wrap label{ display:block; margin:8px 0 }
+      .auth-wrap input{ width:100%; padding:8px 10px; margin-top:4px; border:1px solid rgba(0,0,0,0.08); border-radius:6px }
+      .auth-actions{ margin-top:12px; display:flex; gap:8px; justify-content:space-between }
+      .link-muted{ color:#666; font-size:14px }
+    </style>
+  </head>
+  <body>
+    <script>
+      (function(){
+        try{
+          const s = localStorage.getItem('rmg_session');
+          if(s){ window.location.href = 'index.html'; }
+        }catch(e){ }
+      })();
+    </script>
+    <div class="auth-wrap">
+      <h1>Sign in</h1>
+      <form id="login-form">
+        <label>Email<input id="email" type="email" required></label>
+        <label>Password<input id="password" type="password" required></label>
+        <div class="auth-actions">
+          <button type="submit" class="generate-meme-btn">Login</button>
+          <a class="link-muted" href="register.html">Create account</a>
+        </div>
+      </form>
+      <div id="msg" style="margin-top:10px;color:#b00020"></div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+      document.getElementById('login-form').addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        const msg = document.getElementById('msg'); msg.textContent = '';
+        const res = window.Auth.login({ email, password });
+        if(!res.ok){ msg.textContent = res.message || 'Login failed'; return; }
+        window.location.href = 'index.html';
+      });
+    </script>
+  </body>
+</html>
